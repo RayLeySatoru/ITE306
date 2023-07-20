@@ -1,17 +1,22 @@
-meter =  float(input('Enter the meter to convert:'))
+def encrypt(text, s):
+    result = ""
+    # transverse the plain text
+    for i in range(len(text)):
+        char = text[i]
+        # encrypt upppercase character in plain text
 
-millimeter = meter * 1000
-centimeter = meter * 100
-decimeter = meter * 10
-kilometer = meter / 1000
-inch = meter * 39.37
-foot = meter * 3.28
-mile = meter / 1609.344
+        if (char.isupper()):
+            result += chr((ord(char) + s - 65) % 26 + 65)
+            # encrypt lowercase character in plain text
+        else:
+            result += chr((ord(char) + s - 97) % 26 + 97)
+    return result
+    # check the above function
 
-print('Meter to millimeter :', millimeter)
-print('Meter to centimeter :', centimeter)
-print('Meter to decimeter :', decimeter)
-print('Meter to kilometer :', kilometer)
-print('Meter to inch :', inch)
-print('Meter to foot :', foot)
-print('Meter to mile :', mile)
+
+text = input('enter a text:')
+s = 4
+
+print("Plain Text:" + text)
+print("shift pattern:" + str(s))
+print("cipher:" + encrypt(text, s))
