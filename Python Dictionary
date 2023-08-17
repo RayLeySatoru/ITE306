@@ -1,0 +1,30 @@
+students = {}
+
+while True:
+    
+    print("\n1.ADD")
+    print("\n2.DELETE")
+    print("\n3.LIST")
+    print("\n4.Exit")
+    
+    choice = input("Choose from [1],[2],[3],[4]:")
+    if  choice == '1':
+        student_name = input("Enter Students Name:")
+        course = input("Enter Student Course:")
+        students[student_name] = course
+        print(f"'{student_name}' has been added to the list.")
+        
+    elif choice == '2':
+        student_name = input("Enter Students Name:")
+        if student_name in students:
+          del students[student_name]
+          print(f"{student_name} has been deleted from the list")
+        else:
+              print(f"{student_name} is not in the list.")
+    elif choice == '3':     
+        print("List of Students:")
+        for student, course in students.items():
+            print(f"{student}: {course}")
+    elif choice =='4':
+        print("Exited")
+        break
