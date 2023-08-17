@@ -1,0 +1,30 @@
+books = set()
+
+while True:
+    
+    print("\n1.ADD")
+    print("\n2.DELETE")
+    print("\n3.LIST")
+    print("\n4.Exit")
+
+    choice = input("Choose from [1],[2],[3],[4]:")
+    
+    if  choice == '1':
+        title = input("Enter Book Title:")
+        books.add(title)
+        print(f"'{title}' has been added to the list.")
+        
+    elif choice == '2':
+        title = input("Enter the book title you want to delete:")
+        if title in books:
+            books.remove(title)
+            print(f"'{title}' has been deleted from the list")
+        else:
+             print(f"'{title}' is not in the list")
+    elif choice == '3':
+        print("List of books title:")
+        for title in books:
+            print(title)
+    elif choice =='4':
+        print("Exited")
+        break
