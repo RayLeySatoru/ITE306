@@ -1,0 +1,14 @@
+grades = int(input("Enter the Number of Grades (1-100):"))
+
+total = 0 
+for x in range (grades):
+    grade = int(input("Enter a Grade:"))
+    total += grade
+average = total/grades
+
+print("Average Grade", average)
+
+if average >= 50:
+    print("YOU PASSED!")
+else:
+    print("You Failed")
