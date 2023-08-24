@@ -1,0 +1,13 @@
+import random
+
+secret = random.randint(1, 10)
+
+while True:
+    user_guess = int(input("Guess the number 1-10:"))
+    
+    if user_guess < secret:
+        print("Your Guess is low")
+    elif user_guess > secret:
+        print("Your Guess is High")
+    else:
+        print("Congratulations! Your Guess is Correct!")
