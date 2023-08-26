@@ -1,0 +1,43 @@
+menu = {
+    "Pizza": 10,
+    "Milk Tea": 3,
+    "Coffee": 3,
+    "Burger": 5,
+    "French Fries": 2
+}
+
+order = {}
+
+print("Welcome to the Food Kiosk!")
+
+while True:
+    print("Menu:")
+    for item, price in menu.items():
+        print(f"{item}: ${price:.2f}")
+
+    choice = input("Enter the item you want to order (or 'q' to quit): ")
+
+    if choice == 'q':
+        break
+
+    if choice in menu:
+        quantity = int(input(f"Enter the quantity of {choice} you want to order: "))
+        if choice in order:
+            order[choice] += quantity
+        else:
+            order[choice] = quantity
+        print(f"{quantity} {choice}(s) added to your order.")
+    else:
+        print("Invalid choice! Please choose from the menu.")
+
+total = 0
+
+print("\nYour Bill:")
+for item, quantity in order.items():
+    price = menu[item]
+    item_total = price * quantity
+    print(f"{item}: {quantity} x ${price:.2f} = ${item_total:.2f}")
+    total += item_total
+
+print(f"Total: ${total:.2f}")
+print("Thank you for your order!")
