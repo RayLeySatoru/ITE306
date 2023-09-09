@@ -1,0 +1,58 @@
+import tkinter as tk
+from tkinter import messagebox
+
+
+van_rates = {
+    "Hyundai": 4500,
+    "Mercedes": 6500,
+    "Nissan": 5000,
+    "Suzuki": 3500,
+}
+
+
+def calculate_rent():
+    selected_van = van_var.get()
+    num_days = int(entry_days.get())
+
+    if selected_van in van_rates:
+        rate_per_day = van_rates[selected_van]
+        rent_amount = num_days * rate_per_day
+        messagebox.showinfo("Rent Amount", f"Rent Amount for {selected_van} for {num_days} days: {rent_amount} PHP")
+    else:
+        messagebox.showerror("Error", "Invalid van selection")
+
+
+window = tk.Tk()
+window.title("Van Rental Calculator")
+
+
+window.configure(bg="#14213D")
+
+
+label_days = tk.Label(window, text="Enter number of days to rent:", bg="#FCA311")
+label_days.pack()
+
+
+entry_days = tk.Entry(window)
+entry_days.pack()
+
+
+label_van = tk.Label(window, text="Select a van:", bg="#FCA311")
+label_van.pack()
+
+
+van_var = tk.StringVar()
+van_var.set("Hyundai")
+van_option_menu = tk.OptionMenu(window, van_var, *van_rates.keys())
+van_option_menu.pack()
+
+
+compute_button = tk.Button(window, text="Compute Rent", command=calculate_rent, bg="#4CAF50", fg="white")
+compute_button.pack()
+
+
+exit_button = tk.Button(window, text="Exit", command=window.quit, bg="#f44336", fg="white")
+exit_button.pack()
+
+
+window.mainloop()
